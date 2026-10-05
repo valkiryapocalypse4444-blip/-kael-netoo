@@ -1,1 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>KAEL NETO’O</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #080808;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* HEADER */
+
+        .header {
+            text-align: center;
+            padding: 25px 10px;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #999;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        /* CARTES */
+
+        .card {
+            background: #111;
+            border: 1px solid #252525;
+            border-radius: 18px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .card h2 {
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        /* BOUTONS */
+
+        button {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: #202020;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #303030;
+        }
+
+        .primary {
+            background: #ffffff;
+            color: #000;
+        }
+
+        .primary:hover {
+            background: #dddddd;
+        }
+
+        /* MODES */
+
+        .mode {
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .mode:hover {
+            background: #1c1c1c;
+        }
+
+        .mode-title {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .mode-description {
+            color: #999;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* CHRONO */
+
+        .chrono {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chrono button {
+            margin-top: 0;
+        }
+
+        .chrono button.selected {
+            background: white;
+            color: black;
+        }
+
+        /* RUBRIQUES */
+
+        .rubriques {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .rubrique {
+            background: #191919;
+            border: 1px solid #292929;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            color: #555;
+            font-size: 12px;
+            padding: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="header">
+        <div class="logo">⚡ KAEL NETO’O</div>
+        <div class="subtitle">QUIZ MULTIVERSE</div>
+    </div>
+
+    <div class="card">
+
+        <h2>🎮 Choisir le mode</h2>
+
+        <div class="mode" onclick="choisirMode('multiverse')">
+            <div class="mode-title">🌌 MULTIVERSE</div>
+            <div class="mode-description">
+                Des questions provenant de nombreux mangas et univers.
+            </div>
+        </div>
+
+        <div class="mode" onclick="choisirMode('cible')">
+            <div class="mode-title">🎯 VERSE CIBLÉ</div>
+            <div class="mode-description">
+                Choisis un manga et affronte uniquement cet univers.
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>⏱️ Chrono</h2>
+
+        <div class="chrono">
+
+            <button onclick="choisirChrono(10)" id="chrono10">
+                10s
+            </button>
+
+            <button onclick="choisirChrono(15)" id="chrono15">
+                15s
+            </button>
+
+            <button onclick="choisirChrono(20)" id="chrono20">
+                20s
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>📚 Rubriques</h2>
+
+        <div class="rubriques">
+
+            <div class="rubrique">😈 Emoji</div>
+            <div class="rubrique">⚡ Vitesse</div>
+
+            <div class="rubrique">🗑️ Vaurien</div>
+            <div class="rubrique">🌍 Pays → Capitale</div>
+
+            <div class="rubrique">🚩 Drapeau → Pays</div>
+            <div class="rubrique">🔀 Anagramme</div>
+
+            <div class="rubrique">🦸 Protagoniste</div>
+            <div class="rubrique">👿 Antagoniste</div>
+
+            <div class="rubrique">🔤 3 Lettres</div>
+            <div class="rubrique">🖼️ Image → Personnage</div>
+
+            <div class="rubrique">⚔️ Technique</div>
+            <div class="rubrique">👤 Qui suis-je ?</div>
+
+            <div class="rubrique">✅ Vrai / Faux</div>
+            <div class="rubrique">🎭 Image détail</div>
+
+            <div class="rubrique">🧩 Lettres manquantes</div>
+            <div class="rubrique">🎯 Intrus</div>
+
+            <div class="rubrique">☠️ Survie</div>
+            <div class="rubrique">🎮 Jeux / Logos</div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🏆 Multijoueur</h2>
+
+        <button class="primary" onclick="creerSalle()">
+            ⚡ CRÉER UNE SALLE
+        </button>
+
+        <button onclick="rejoindreSalle()">
+            🚪 REJOINDRE UNE SALLE
+        </button>
+
+    </div>
+
+    <div class="footer">
+        KAEL NETO’O • Quiz Multiverse
+    </div>
+
+</div>
+
+<script>
+
+let modeChoisi = "multiverse";
+let chronoChoisi = 10;
+
+function choisirMode(mode) {
+
+    modeChoisi = mode;
+
+    if (mode === "multiverse") {
+        alert("🌌 Mode MULTIVERSE sélectionné !");
+    }
+
+    if (mode === "cible") {
+        alert("🎯 Mode VERSE CIBLÉ sélectionné !");
+    }
+}
+
+function choisirChrono(secondes) {
+
+    chronoChoisi = secondes;
+
+    document
+        .querySelectorAll(".chrono button")
+        .forEach(button => {
+            button.classList.remove("selected");
+        });
+
+    document
+        .getElementById("chrono" + secondes)
+        .classList.add("selected");
+}
+
+function creerSalle() {
+
+    alert(
+        "⚡ Création d'une salle KAEL NETO’O\n\n" +
+        "Mode : " + modeChoisi + "\n" +
+        "Chrono : " + chronoChoisi + " secondes"
+    );
+}
+
+function rejoindreSalle() {
+
+    let code = prompt("Entre le code de la salle :");
+
+    if (code) {
+        alert("🚪 Tentative de rejoindre la salle : " + code);
+    }
+}
+
+choisirChrono(10);
+
+</script>
+
+</body>
+  </html>
