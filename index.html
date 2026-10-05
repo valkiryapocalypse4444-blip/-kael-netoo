@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>KAEL NETO’O</title>
 
 <style>
+
+/* =========================
+   BASE
+========================= */
 
 *{
     box-sizing:border-box;
@@ -28,6 +36,11 @@ body{
     padding:20px;
 }
 
+
+/* =========================
+   HEADER
+========================= */
+
 .header{
     text-align:center;
     padding:30px 10px;
@@ -45,6 +58,11 @@ body{
     font-size:14px;
 }
 
+
+/* =========================
+   CARTES
+========================= */
+
 .card{
     background:#111;
     border:1px solid #292929;
@@ -57,6 +75,11 @@ body{
     font-size:19px;
     margin-bottom:15px;
 }
+
+
+/* =========================
+   MODES
+========================= */
 
 .mode{
     border:1px solid #333;
@@ -87,10 +110,29 @@ body{
     margin-top:6px;
 }
 
+
+/* =========================
+   CHRONO
+========================= */
+
 .chrono{
     display:flex;
     gap:8px;
 }
+
+.chrono button{
+    margin-top:0;
+}
+
+.chrono button.selected{
+    background:white;
+    color:black;
+}
+
+
+/* =========================
+   BOUTONS
+========================= */
 
 button{
     width:100%;
@@ -105,13 +147,12 @@ button{
     cursor:pointer;
 }
 
-.chrono button{
-    margin-top:0;
+button:hover{
+    background:#303030;
 }
 
-.chrono button.selected{
-    background:white;
-    color:black;
+button:active{
+    transform:scale(0.98);
 }
 
 .primary{
@@ -119,16 +160,92 @@ button{
     color:black;
 }
 
-button:active{
-    transform:scale(0.98);
+.primary:hover{
+    background:#ddd;
 }
+
+
+/* =========================
+   CONFIGURATION
+========================= */
 
 .info{
     text-align:center;
-    color:#777;
-    font-size:13px;
-    margin-top:10px;
+    color:#999;
+    font-size:14px;
+    line-height:1.8;
 }
+
+
+/* =========================
+   QUIZ
+========================= */
+
+#quizScreen{
+    display:none;
+}
+
+.question-number{
+    color:#888;
+    font-size:13px;
+    text-align:center;
+}
+
+.timer{
+    font-size:46px;
+    font-weight:900;
+    text-align:center;
+    margin:15px 0;
+}
+
+.question{
+    font-size:21px;
+    font-weight:bold;
+    text-align:center;
+    line-height:1.4;
+    margin:20px 0;
+}
+
+.answer-input{
+    width:100%;
+    padding:15px;
+
+    border-radius:12px;
+    border:1px solid #333;
+
+    background:#191919;
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.answer-input:focus{
+    border-color:#777;
+}
+
+.quiz-message{
+    margin-top:15px;
+    min-height:25px;
+
+    text-align:center;
+
+    font-weight:bold;
+}
+
+.score{
+    margin-top:15px;
+
+    color:#aaa;
+
+    text-align:center;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
     text-align:center;
@@ -138,135 +255,278 @@ button:active{
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="app">
 
-    <div class="header">
-        <div class="logo">⚡ KAEL NETO’O</div>
-        <div class="subtitle">QUIZ MULTIVERSE</div>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="header">
+
+    <div class="logo">
+        ⚡ KAEL NETO’O
     </div>
 
-
-    <!-- MODE -->
-
-    <div class="card">
-
-        <h2>🎮 Choisir le mode</h2>
-
-        <div
-            class="mode selected"
-            id="modeMultiverse"
-            onclick="choisirMode('multiverse')"
-        >
-            <div class="mode-title">
-                🌌 MULTIVERSE
-            </div>
-
-            <div class="mode-description">
-                Des questions provenant de nombreux mangas
-                et univers.
-            </div>
-        </div>
-
-
-        <div
-            class="mode"
-            id="modeCible"
-            onclick="choisirMode('cible')"
-        >
-            <div class="mode-title">
-                🎯 VERSE CIBLÉ
-            </div>
-
-            <div class="mode-description">
-                Choisis un manga et joue uniquement
-                dans cet univers.
-            </div>
-        </div>
-
+    <div class="subtitle">
+        QUIZ MULTIVERSE
     </div>
 
+</div>
 
-    <!-- CHRONO -->
 
-    <div class="card">
 
-        <h2>⏱️ Chrono</h2>
+<!-- =========================
+     MODE
+========================= -->
 
-        <div class="chrono">
+<div class="card">
 
-            <button
-                id="chrono10"
-                class="selected"
-                onclick="choisirChrono(10)"
-            >
-                10s
-            </button>
+    <h2>
+        🎮 Choisir le mode
+    </h2>
 
-            <button
-                id="chrono15"
-                onclick="choisirChrono(15)"
-            >
-                15s
-            </button>
 
-            <button
-                id="chrono20"
-                onclick="choisirChrono(20)"
-            >
-                20s
-            </button>
+    <div
+        class="mode selected"
+        id="modeMultiverse"
+        onclick="choisirMode('multiverse')"
+    >
 
+        <div class="mode-title">
+            🌌 MULTIVERSE
+        </div>
+
+        <div class="mode-description">
+            Des questions provenant de nombreux
+            mangas et univers.
         </div>
 
     </div>
 
 
-    <!-- CONFIGURATION -->
 
-    <div class="card">
+    <div
+        class="mode"
+        id="modeCible"
+        onclick="choisirMode('cible')"
+    >
 
-        <h2>⚙️ Configuration</h2>
+        <div class="mode-title">
+            🎯 VERSE CIBLÉ
+        </div>
 
-        <div class="info" id="configuration">
-
-            Mode : 🌌 Multiverse<br>
-            Chrono : 10 secondes
-
+        <div class="mode-description">
+            Choisis un manga et joue uniquement
+            dans cet univers.
         </div>
 
     </div>
 
+</div>
 
-    <!-- SALLE -->
 
-    <div class="card">
 
-        <h2>🏆 Multijoueur</h2>
+<!-- =========================
+     CHRONO
+========================= -->
+
+<div class="card">
+
+    <h2>
+        ⏱️ Chrono
+    </h2>
+
+
+    <div class="chrono">
 
         <button
-            class="primary"
-            onclick="creerSalle()"
+            id="chrono10"
+            class="selected"
+            onclick="choisirChrono(10)"
         >
-            ⚡ CRÉER UNE SALLE
+            10s
         </button>
 
+
         <button
-            onclick="rejoindreSalle()"
+            id="chrono15"
+            onclick="choisirChrono(15)"
         >
-            🚪 REJOINDRE UNE SALLE
+            15s
+        </button>
+
+
+        <button
+            id="chrono20"
+            onclick="choisirChrono(20)"
+        >
+            20s
         </button>
 
     </div>
 
+</div>
 
-    <div class="footer">
-        KAEL NETO’O • Quiz Multiverse
+
+
+<!-- =========================
+     CONFIGURATION
+========================= -->
+
+<div class="card">
+
+    <h2>
+        ⚙️ Configuration
+    </h2>
+
+
+    <div
+        class="info"
+        id="configuration"
+    >
+
+        Mode : 🌌 Multiverse
+        <br>
+
+        Chrono : 10 secondes
+
     </div>
+
+</div>
+
+
+
+<!-- =========================
+     MULTIJOUEUR
+========================= -->
+
+<div class="card">
+
+    <h2>
+        🏆 Multijoueur
+    </h2>
+
+
+    <button
+        class="primary"
+        onclick="creerSalle()"
+    >
+
+        ⚡ CRÉER UNE SALLE
+
+    </button>
+
+
+    <button
+        onclick="rejoindreSalle()"
+    >
+
+        🚪 REJOINDRE UNE SALLE
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     ÉCRAN DU QUIZ
+========================= -->
+
+<div
+    id="quizScreen"
+    class="card"
+>
+
+    <div
+        id="questionNumber"
+        class="question-number"
+    >
+        QUESTION 1
+    </div>
+
+
+    <div
+        id="timer"
+        class="timer"
+    >
+        10
+    </div>
+
+
+    <div
+        id="question"
+        class="question"
+    >
+    </div>
+
+
+    <input
+        id="answerInput"
+        class="answer-input"
+        type="text"
+        placeholder="Écris ta réponse..."
+        autocomplete="off"
+    >
+
+
+    <button
+        class="primary"
+        onclick="validerReponse()"
+    >
+
+        ✅ RÉPONDRE
+
+    </button>
+
+
+    <div
+        id="quizMessage"
+        class="quiz-message"
+    >
+    </div>
+
+
+    <div
+        id="score"
+        class="score"
+    >
+
+        🏆 Score : 0
+
+    </div>
+
+
+    <button
+        onclick="quitterQuiz()"
+    >
+
+        ↩️ QUITTER LE QUIZ
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<div class="footer">
+
+    KAEL NETO’O • Quiz Multiverse
+
+</div>
+
 
 </div>
 
@@ -274,11 +534,128 @@ button:active{
 
 <script>
 
+/* ==================================================
+   VARIABLES PRINCIPALES
+================================================== */
+
 let modeChoisi = "multiverse";
 
 let chronoChoisi = 10;
 
+let questionActuelle = 0;
 
+let scoreJoueur = 0;
+
+let tempsRestant = 10;
+
+let timerQuiz = null;
+
+let questionTerminee = false;
+
+
+
+/* ==================================================
+   QUESTIONS
+================================================== */
+
+const questions = [
+
+    {
+        question:
+        "Quel est le nom du héros principal de Naruto ?",
+
+        answers:[
+            "naruto",
+            "naruto uzumaki"
+        ],
+
+        correct:
+        "Naruto Uzumaki"
+    },
+
+
+    {
+        question:
+        "Quel est le nom du frère de Sasuke Uchiha ?",
+
+        answers:[
+            "itachi",
+            "itachi uchiha"
+        ],
+
+        correct:
+        "Itachi Uchiha"
+    },
+
+
+    {
+        question:
+        "Dans One Piece, comment s'appelle le capitaine des Mugiwara ?",
+
+        answers:[
+            "luffy",
+            "monkey d luffy",
+            "monkey d. luffy"
+        ],
+
+        correct:
+        "Monkey D. Luffy"
+    },
+
+
+    {
+        question:
+        "Dans Dragon Ball, comment s'appelle le héros principal ?",
+
+        answers:[
+            "goku",
+            "son goku"
+        ],
+
+        correct:
+        "Son Goku"
+    },
+
+
+    {
+        question:
+        "Dans Solo Leveling, comment s'appelle le protagoniste ?",
+
+        answers:[
+            "sung jinwoo",
+            "sung jin-woo",
+            "jinwoo",
+            "jin woo"
+        ],
+
+        correct:
+        "Sung Jinwoo"
+    }
+
+];
+
+
+
+/* ==================================================
+   NORMALISATION DES RÉPONSES
+================================================== */
+
+function normaliserReponse(texte){
+
+    return texte
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/[.,!?']/g,"")
+        .trim();
+
+}
+
+
+
+/* ==================================================
+   CHOIX DU MODE
+================================================== */
 
 function choisirMode(mode){
 
@@ -288,6 +665,7 @@ function choisirMode(mode){
     document
         .getElementById("modeMultiverse")
         .classList.remove("selected");
+
 
     document
         .getElementById("modeCible")
@@ -318,6 +696,10 @@ function choisirMode(mode){
 
 
 
+/* ==================================================
+   CHOIX DU CHRONO
+================================================== */
+
 function choisirChrono(secondes){
 
     chronoChoisi = secondes;
@@ -327,9 +709,11 @@ function choisirChrono(secondes){
         .getElementById("chrono10")
         .classList.remove("selected");
 
+
     document
         .getElementById("chrono15")
         .classList.remove("selected");
+
 
     document
         .getElementById("chrono20")
@@ -337,7 +721,9 @@ function choisirChrono(secondes){
 
 
     document
-        .getElementById("chrono" + secondes)
+        .getElementById(
+            "chrono" + secondes
+        )
         .classList.add("selected");
 
 
@@ -347,6 +733,10 @@ function choisirChrono(secondes){
 
 
 
+/* ==================================================
+   CONFIGURATION
+================================================== */
+
 function mettreAJourConfiguration(){
 
     let modeTexte;
@@ -354,11 +744,15 @@ function mettreAJourConfiguration(){
 
     if(modeChoisi === "multiverse"){
 
-        modeTexte = "🌌 Multiverse";
+        modeTexte =
+        "🌌 Multiverse";
 
-    }else{
+    }
 
-        modeTexte = "🎯 Verse ciblé";
+    else{
+
+        modeTexte =
+        "🎯 Verse ciblé";
 
     }
 
@@ -366,44 +760,255 @@ function mettreAJourConfiguration(){
     document
         .getElementById("configuration")
         .innerHTML =
-        "Mode : " + modeTexte +
+
+        "Mode : " +
+        modeTexte +
+
         "<br>" +
-        "Chrono : " + chronoChoisi +
+
+        "Chrono : " +
+        chronoChoisi +
         " secondes";
 
 }
 
 
 
+/* ==================================================
+   CRÉER UNE SALLE
+================================================== */
+
 function creerSalle(){
 
-    alert(
-        "⚡ KAEL NETO’O\n\n" +
-        "Création de salle\n\n" +
-        "Mode : " +
-        modeChoisi +
-        "\nChrono : " +
-        chronoChoisi +
-        " secondes"
-    );
+    demarrerQuiz();
 
 }
 
 
 
-function rejoindreSalle(){
+/* ==================================================
+   DÉMARRER LE QUIZ
+================================================== */
 
-    let code = prompt(
-        "🚪 Entre le code de la salle :"
-    );
+function demarrerQuiz(){
+
+    questionActuelle = 0;
+
+    scoreJoueur = 0;
 
 
-    if(code){
+    document
+        .getElementById("quizScreen")
+        .style.display = "block";
 
-        alert(
-            "Tentative de rejoindre la salle : " +
-            code
+
+    afficherQuestion();
+
+
+    document
+        .getElementById("quizScreen")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+
+/* ==================================================
+   AFFICHER QUESTION
+================================================== */
+
+function afficherQuestion(){
+
+    clearInterval(timerQuiz);
+
+
+    questionTerminee = false;
+
+
+    let q =
+        questions[questionActuelle];
+
+
+    document
+        .getElementById("questionNumber")
+        .textContent =
+
+        "QUESTION " +
+        (questionActuelle + 1) +
+        " / " +
+        questions.length;
+
+
+    document
+        .getElementById("question")
+        .textContent =
+        q.question;
+
+
+    document
+        .getElementById("answerInput")
+        .value = "";
+
+
+    document
+        .getElementById("answerInput")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("quizMessage")
+        .textContent = "";
+
+
+    document
+        .getElementById("score")
+        .textContent =
+
+        "🏆 Score : " +
+        scoreJoueur;
+
+
+    tempsRestant =
+        chronoChoisi;
+
+
+    document
+        .getElementById("timer")
+        .textContent =
+        tempsRestant;
+
+
+    timerQuiz =
+    setInterval(function(){
+
+        tempsRestant--;
+
+
+        document
+            .getElementById("timer")
+            .textContent =
+            tempsRestant;
+
+
+        if(tempsRestant <= 0){
+
+            clearInterval(timerQuiz);
+
+            tempsEcoule();
+
+        }
+
+    },1000);
+
+
+    setTimeout(function(){
+
+        document
+            .getElementById("answerInput")
+            .focus();
+
+    },100);
+
+}
+
+
+
+/* ==================================================
+   VALIDER RÉPONSE
+================================================== */
+
+function validerReponse(){
+
+    if(questionTerminee){
+
+        return;
+
+    }
+
+
+    let input =
+        document.getElementById(
+            "answerInput"
         );
+
+
+    let reponse =
+        normaliserReponse(
+            input.value
+        );
+
+
+    if(reponse === ""){
+
+        return;
+
+    }
+
+
+    let q =
+        questions[questionActuelle];
+
+
+    let bonneReponse =
+        q.answers.some(function(answer){
+
+            return normaliserReponse(answer)
+            ===
+            reponse;
+
+        });
+
+
+    if(bonneReponse){
+
+        questionTerminee = true;
+
+
+        clearInterval(timerQuiz);
+
+
+        scoreJoueur += 10;
+
+
+        document
+            .getElementById("quizMessage")
+            .textContent =
+
+            "✅ CORRECT ! +10 points";
+
+
+        document
+            .getElementById("score")
+            .textContent =
+
+            "🏆 Score : " +
+            scoreJoueur;
+
+
+        input.disabled = true;
+
+
+        setTimeout(function(){
+
+            input.disabled = false;
+
+            questionSuivante();
+
+        },1500);
+
+    }
+
+
+    else{
+
+        document
+            .getElementById("quizMessage")
+            .textContent =
+
+            "❌ Mauvaise réponse !";
 
     }
 
@@ -411,7 +1016,186 @@ function rejoindreSalle(){
 
 
 
+/* ==================================================
+   TEMPS ÉCOULÉ
+================================================== */
+
+function tempsEcoule(){
+
+    if(questionTerminee){
+
+        return;
+
+    }
+
+
+    questionTerminee = true;
+
+
+    let q =
+        questions[questionActuelle];
+
+
+    document
+        .getElementById("quizMessage")
+        .textContent =
+
+        "⌛ Temps écoulé ! Réponse : " +
+        q.correct;
+
+
+    document
+        .getElementById("answerInput")
+        .disabled = true;
+
+
+    setTimeout(function(){
+
+        document
+            .getElementById("answerInput")
+            .disabled = false;
+
+        questionSuivante();
+
+    },2000);
+
+}
+
+
+
+/* ==================================================
+   QUESTION SUIVANTE
+================================================== */
+
+function questionSuivante(){
+
+    questionActuelle++;
+
+
+    if(
+        questionActuelle
+        >=
+        questions.length
+    ){
+
+        terminerQuiz();
+
+        return;
+
+    }
+
+
+    afficherQuestion();
+
+}
+
+
+
+/* ==================================================
+   FIN DU QUIZ
+================================================== */
+
+function terminerQuiz(){
+
+    clearInterval(timerQuiz);
+
+
+    document
+        .getElementById("questionNumber")
+        .textContent =
+        "🏆 RÉSULTAT FINAL";
+
+
+    document
+        .getElementById("timer")
+        .textContent =
+        "⚡";
+
+
+    document
+        .getElementById("question")
+        .textContent =
+        "QUIZ TERMINÉ !";
+
+
+    document
+        .getElementById("answerInput")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("quizMessage")
+        .textContent =
+
+        "Score final : " +
+        scoreJoueur +
+        " points";
+
+
+    document
+        .getElementById("score")
+        .textContent =
+
+        "🏆 " +
+        scoreJoueur +
+        " / " +
+        (questions.length * 10) +
+        " points";
+
+}
+
+
+
+/* ==================================================
+   QUITTER LE QUIZ
+================================================== */
+
+function quitterQuiz(){
+
+    clearInterval(timerQuiz);
+
+
+    document
+        .getElementById("quizScreen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("answerInput")
+        .disabled =
+        false;
+
+}
+
+
+
+/* ==================================================
+   REJOINDRE UNE SALLE
+================================================== */
+
+function rejoindreSalle(){
+
+    let code =
+        prompt(
+            "🚪 Entre le code de la salle :"
+        );
+
+
+    if(code){
+
+        alert(
+            "Salle demandée : " +
+            code
+        );
+
+    }
+
+}
+
 </script>
 
 </body>
+
     </html>
